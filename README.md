@@ -10,11 +10,13 @@ Configure your datomic connections file in the project.clj.  Datomic connections
 
 Eg.
 
+```
 {
 :work-db "datomic:free://localhost:4334/working"
 :test-db "datomic:free://localhost:4334/testing"
 :other "datomic:free://localhost:4334/other"
 }
+```
 
 Within the datomic-repl, you can refer to connections via their keyword name.  The actual datomic connection will be lazily cached on first request.
 
