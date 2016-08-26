@@ -25,7 +25,7 @@
              :dev {
                    :dependencies [[com.datomic/datomic-free "0.9.5206" :exclusions [joda-time]]
                                   [cursive/datomic-stubs "0.9.5153" :scope "provided"]]
-                   :env {:db-connections-file "/Users/mattyu/.datomic.connections"}
+                   :env {:db-connections-file ".datomic.connections"}
                    }
              :prod {
                     :repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
