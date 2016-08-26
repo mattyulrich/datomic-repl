@@ -79,12 +79,12 @@
   If the query doesn't resolve to a list of entity identifiers, an error
   will be printed and no data returned."
   [conn-name pull-spec query-spec & inputs]
-  (let [entities (query conn-name query-spec inputs)
+  (let [entities (apply query conn-name query-spec inputs)
         conn (get-conn conn-name)]
     (when (not (nil? conn))
       (if (and (seq entities)
             (and (every? #(and (= 1 (count %1)) (number? (first %1))) entities)))
-        (d/pull (d/db conn) pull-spec entities)
+        (map #(d/pull (d/db conn) pull-spec (first %1)) entities)
         (println "Query Results are Not an Entity Set - Please Restructure Query to return a list of Entities for Pulling")))))
 
 (def help-functions {"list-connections" (var list-connections)
